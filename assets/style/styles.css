@@ -60,11 +60,11 @@ h2 {
   background-color: #e7d6d6;
   inset: 0;
   transform: rotateY(0deg);
-  transition: 0.25s;
-  backface-visibility: hidden;
+  transition: transform 0.25s;
 }
 .card.card-open::after {
   transform: rotateY(180deg);
+  background-color: transparent;
 }
 .reset {
   font-family: "Press Start 2P", monospace, sans-serif;
