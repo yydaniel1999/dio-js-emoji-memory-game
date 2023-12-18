@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  font-family: "Press Start 2P", monospace, sans-serif;
+  background-image: url("../img/background.jpg");
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h2 {
+  font-size: 40px;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+  text-align: center;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px 10px;
+}
+.game {
+  display: flex;
+}
+.card-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border: 3px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotateY(180deg);
+  transition: 0.25s;
+  position: relative;
+}
+.card.card-open {
+  transform: rotateY(0deg);
+}
+.card::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  background-color: #e7d6d6;
+  inset: 0;
+  transform: rotateY(0deg);
+  transition: 0.25s;
+  backface-visibility: hidden;
+}
+.card.card-open::after {
+  transform: rotateY(180deg);
+}
+.reset {
+  font-family: "Press Start 2P", monospace, sans-serif;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+  letter-spacing: 2px;
+  background-color: #8eadf1;
+  width: 100%;
+  border: none;
+  margin: 0 auto;
+  line-height: 40px;
+  border-radius: 5px;
+}
+.reset:focus {
+  color: #fff;
+  text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000;
+  background-color: #b82727;
+}
+
+@media (max-width: 800px) {
+  h2 {
+    line-height: 50px;
+    font-size: 36px;
+  }
+}
