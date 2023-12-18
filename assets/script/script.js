@@ -39,6 +39,7 @@ const cardOpen = (e) => {
   }
 
   if (document.querySelectorAll(".card-open").length === states.values.cards.length) {
+    removeCardListener();
     setTimeout(() => {
       playSound("gameover");
     }, 800);
@@ -46,6 +47,12 @@ const cardOpen = (e) => {
       alert("Game Over!");
     }, 1000);
   }
+};
+
+const removeCardListener = () => {
+  states.view.cards.querySelectorAll(".card").forEach((card) => {
+    card.removeEventListener("pointerdown", cardOpen);
+  });
 };
 
 const addCardsListener = () => {
