@@ -65,7 +65,12 @@ const createCardElement = (cardId) => {
   const cardElement = document.createElement("li");
   cardElement.className = "card";
   cardElement.setAttribute("card-id", cardId);
-  cardElement.style.backgroundImage = `url(./assets/img/${cardId}.png)`;
+
+  const cardFront = document.createElement("div");
+  cardFront.className = "card__front";
+  cardFront.style.backgroundImage = `url(./assets/img/${cardId}.png)`;
+
+  cardElement.appendChild(cardFront);
   states.view.cards.appendChild(cardElement);
 };
 

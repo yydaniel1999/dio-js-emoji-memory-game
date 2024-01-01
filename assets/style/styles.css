@@ -30,23 +30,26 @@ h2 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   list-style: none;
-  transform-style: preserve-3d;
-  perspective: 500px;
 }
 .card {
-  background-color: #fff;
+  position: relative;
   padding: 20px;
-  border: 3px solid #000;
   border-radius: 5px;
   cursor: pointer;
+  perspective: 500px;
+}
+.card .card__front {
+  border: 3px solid #000;
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
   background-size: 75%;
   background-repeat: no-repeat;
   background-position: center;
   transform: rotateY(180deg);
-  transition: 0.25s;
-  position: relative;
+  transition: 0.25s ease;
 }
-.card.card-open {
+.card.card-open .card__front {
   transform: rotateY(0deg);
 }
 .card::before {
@@ -55,16 +58,17 @@ h2 {
   padding-top: 100%;
 }
 .card::after {
+  border: 3px solid #000;
+
+  background-color: #e7d6d6;
   content: "";
   position: absolute;
-  background-color: #e7d6d6;
   inset: 0;
-  transform: rotateY(0deg);
-  transition: transform 0.25s;
+  transition: transform 0.25s ease;
+  backface-visibility: hidden;
 }
 .card.card-open::after {
-  transform: rotateY(180deg);
-  background-color: transparent;
+  transform: rotateY(-180deg);
 }
 .reset {
   font-family: "Press Start 2P", monospace, sans-serif;
